@@ -1,8 +1,7 @@
-[![Build Status](https://app.travis-ci.com/maitreya1698/shamazon_robot.svg?branch=phase_1)](https://app.travis-ci.com/maitreya1698/shamazon_robot)
-
-[![Coverage Status](https://coveralls.io/repos/github/maitreya1698/shamazon_robot/badge.svg?branch=main)](https://coveralls.io/github/maitreya1698/shamazon_robot?branch=main)
 
 # Shamazon_Warehouse_Robot
+[![Build Status](https://app.travis-ci.com/maitreya1698/shamazon_robot.svg?branch=phase_1)](https://app.travis-ci.com/maitreya1698/shamazon_robot)
+[![Coverage Status](https://coveralls.io/repos/github/maitreya1698/shamazon_robot/badge.svg)](https://coveralls.io/github/maitreya1698/shamazon_robot)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
 ## Overview
@@ -42,11 +41,11 @@ are made:
 - ### [Activity Diagram](UML/initial/ActivityDiagram.pdf)
 - ### [Class Diagram](UML/initial/ClassDiagram.pdf)
 
-## [Quad Chart](Quadchart.pdf)  
+## [Quad Chart](/quadchart.pdf)  
 
 ## Agile Iterative Process (AIP) 
 The general idea is to split the development of the software into sequences of repeated cycles (iterations).  
-Following is the link to sheet fthat contains the detailed entries of the  product backlog, iteration backlog, and work log- [link](https://docs.google.com/spreadsheets/d/18Xq4BVFL68C6Wvr2qXAJ81NjCmKPvWJj-AAwVcG0ChA/edit#gid=0)
+Following is the link to sheet that contains the detailed entries of the  product backlog, iteration backlog, and work log- [link](https://docs.google.com/spreadsheets/d/18Xq4BVFL68C6Wvr2qXAJ81NjCmKPvWJj-AAwVcG0ChA/edit#gid=0)
 
 ## Sprint Planning and Review
 The purpose of sprint planning is to define what can be delivered in the sprint and how that work will be achieved.  
