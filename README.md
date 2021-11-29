@@ -35,8 +35,8 @@ are made:
 - A package might fall off due to sudden jerks, so robot velocity and acceleration will be constrained.
 
 ## UML Diagrams:
-- ### [Activity Diagram](UML_Diagram/Initial/ActivityDiagram.pdf)
-- ### [Class Diagram](UML_Diagram/Initial/ClassDiagram.pdf)
+- ### [Activity Diagram](UML/initial/ActivityDiagram.pdf)
+- ### [Class Diagram](UML/initial/ClassDiagram.pdf)
 
 ## [Quad Chart](Quadchart.pdf)  
 
