@@ -1,3 +1,7 @@
+[![Build Status](https://app.travis-ci.com/maitreya1698/shamazon_robot.svg?branch=main)](https://app.travis-ci.com/maitreya1698/shamazon_robot)
+
+[![Coverage Status](https://coveralls.io/repos/github/maitreya1698/shamazon_robot/badge.svg?branch=main)](https://coveralls.io/github/maitreya1698/shamazon_robot?branch=main)
+
 # Shamazon_Warehouse_Robot
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
