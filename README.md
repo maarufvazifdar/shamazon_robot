@@ -51,6 +51,7 @@ Following is the link to sheet that contains the detailed entries of the  produc
 The purpose of sprint planning is to define what can be delivered in the sprint and how that work will be achieved.  
 Following is the link to doc for sprint planning and review - [link](https://docs.google.com/document/d/1AmzMY3f8XwVzfqlMO0ibq1iekdNcpcQLZXXCRKqJ8bo/edit)
 
+
 ## Authors
 - Pratik Bhujbal  UID: 117555295   
   Github URL: https://github.com/prat33k-dev
@@ -60,6 +61,7 @@ Following is the link to doc for sprint planning and review - [link](https://doc
   
 - Maaruf Vazifdar UID: 117509717  
   Github URL: https://github.com/maarufvazifdar
+
 
 ## License
 The 3-Clause BSD License

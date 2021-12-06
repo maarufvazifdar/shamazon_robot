@@ -1,0 +1,9 @@
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 50
+
+# Left Arm Controllers
+conveyor2_joint_controller:
+  type: effort_controllers/JointPositionController
+  joint: conveyor2_joint
+  pid: {p: 750, i: 10, d: 100, i_clamp: 150}

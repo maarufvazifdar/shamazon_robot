@@ -37,6 +37,8 @@
 #include<move_base_msgs/MoveBaseAction.h>
 #include<actionlib/client/simple_action_client.h>
 #include <tf/tf.h>
+
+
 #pragma once
 
 
@@ -52,8 +54,8 @@ class Navigation {
    */
   Navigation() {
     _goal_status = true;
-    _pickup_goal = [1, 0, 1.5707];
-    _delivery_goal = [15, 5, 3.1415];
+    // _pickup_goal = [1, 0, 1.5707];
+    // _delivery_goal = [15, 5, 3.1415];
   }
 
   /**
@@ -103,8 +105,8 @@ class Navigation {
    * Class local variables.
    */
   bool _goal_status;
-  double _pickup_goal[];
-  double _delivery_goal[];
+  // double _pickup_goal[];
+  // double _delivery_goal[];
   typedef actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> _move_base_client;
   move_base_msgs::MoveBaseGoal _goal;
   nav_msgs::Odometry _robot_pose;
