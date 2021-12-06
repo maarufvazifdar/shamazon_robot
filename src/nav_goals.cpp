@@ -2,6 +2,7 @@
 #include<ros/ros.h>   
 #include<nav_goals/nav_goals.h>
 
+
 int main(int argc, char **argv)
 {   
     while(true) {
