@@ -297,6 +297,7 @@
         <far>3</far>
       </clip>
     </camera>
+    
     <plugin name="realsense_controller" filename="libgazebo_ros_openni_kinect.so">
       <baseline>0.2</baseline>
       <alwaysOn>false</alwaysOn>
