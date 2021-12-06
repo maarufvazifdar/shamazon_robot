@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <launch>
   <!-- send urdf to param server -->
   <param name="robot_description" command="$(find xacro)/xacro $(find shamazon_robot)/urdf/shamazon_robot.xacro" />
