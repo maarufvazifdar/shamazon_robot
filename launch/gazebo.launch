@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <launch>
   <!-- send urdf to param server -->
   <param name="robot_description" command="$(find xacro)/xacro $(find shamazon_robot)/urdf/shamazon_robot.xacro" />
@@ -31,7 +32,6 @@
               -x $(arg x) -y $(arg y) -z $(arg z)
               -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)"/>
 
-  <!-- Robot Controller -->
   <rosparam file="$(find shamazon_robot)/config/shamazon_robot.yaml" command="load"/>
   <node name="controller_spawner" ns="/" output="screen" pkg="controller_manager" respawn="false" type="spawner" args="conveyor2_joint_controller"/>
   
