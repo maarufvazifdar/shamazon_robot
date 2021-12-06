@@ -1,0 +1,379 @@
+<?xml version="1.0"?>
+<robot name="robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find shamazon_robot)/urdf/ydlidar.urdf"/>
+
+  <link name="robot_footprint">
+  </link> 
+
+  <link name="base_link">
+    <origin xyz="0 0 0" rpy=" 0 0 0.1"/>
+    <!-- <collision>
+      <geometry>
+        <box size="0.9 0.65 0.01"/>
+       </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0.225"/>
+    </collision> -->
+    <inertial>
+      <mass value="100"/>
+      <inertia ixx="0.166667" ixy="0.0" ixz="0.0" iyy="0.166667" iyz="0.0" izz="0.166667"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="package://shamazon_robot/meshes/base_link.stl"/>
+       </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/> 
+    </visual>
+    <visual>
+      <geometry>
+        <mesh filename="package://shamazon_robot/meshes/top_plate.stl"/>
+       </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/> 
+    </visual>
+    <visual>
+      <geometry>
+        <mesh filename="package://shamazon_robot/meshes/bumper.stl"/>
+       </geometry>
+      <origin rpy="0 0 0" xyz="0.47 0 0.091"/> 
+    </visual>
+    <visual>
+      <geometry>
+        <mesh filename="package://shamazon_robot/meshes/bumper.stl"/>
+       </geometry>
+      <origin rpy="0 0 3.14" xyz="-0.47 0 0.091"/> 
+    </visual>
+  </link>
+
+  <link name="conveyor1">
+    <visual>
+      <geometry>
+        <box size="0.6 0.65 0.01"/>
+       </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0.225"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.6 0.65 0.01"/>
+       </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0.225"/> 
+    </collision>
+    <inertial>
+      <mass value="2"/>
+      <inertia ixx="0.14" ixy="0.0" ixz="0.0" iyy="0.14" iyz="0.0" izz="0.12"/>
+      <origin rpy="1.5707 0 0" xyz="0 0 0"/> 
+    </inertial>
+  </link>
+
+  <link name="conveyor2">
+    <!-- <visual>
+      <geometry>
+        <box size="0.6 0.01 0.02"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </visual> -->
+    <collision>
+      <geometry>
+        <box size="0.6 0.01 0.02"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/> 
+    </collision>
+    <inertial>
+      <mass value="2"/>
+      <inertia ixx="0.14" ixy="0.0" ixz="0.0" iyy="0.14" iyz="0.0" izz="0.12"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/> 
+    </inertial>
+  </link>
+ 
+ <link name="front_left_wheel">
+    <visual>
+      <geometry>
+        <mesh filename="package://shamazon_robot/meshes/wheel.stl"/>
+      </geometry>
+      <origin rpy="-3.14 0 0" xyz="0 0 0"/> 
+    </visual>
+    <collision>
+      <geometry>
+      <cylinder length="0.1143" radius="0.17775"/>
+      </geometry>
+      <origin rpy="1.5707 0 0" xyz="0 0 0"/> 
+    </collision>
+    <inertial>
+      <mass value="5"/>
+      <inertia ixx="0.14" ixy="0.0" ixz="0.0" iyy="0.14" iyz="0.0" izz="0.12"/>
+      <origin rpy="1.5707 0 0" xyz="0 0 0"/> 
+    </inertial>
+  </link>
+
+  <link name="front_right_wheel">
+    <visual>
+      <geometry>
+        <mesh filename="package://shamazon_robot/meshes/wheel.stl"/>
+      </geometry>
+      <origin rpy="-3.14 0 0" xyz="0 0 0"/> 
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.1143" radius="0.17775"/>
+      </geometry>
+      <origin rpy="1.5707 0 0" xyz="0 0 0"/> 
+    </collision>
+    <inertial>
+      <mass value="5"/>
+      <inertia ixx="0.14" ixy="0.0" ixz="0.0" iyy="0.14" iyz="0.0" izz="0.12"/>
+      <origin rpy="1.5707 0 0" xyz="0 0 0"/> 
+    </inertial>
+  </link>
+ 
+  <link name="back_left_wheel">
+    <visual>
+      <geometry>
+        <mesh filename="package://shamazon_robot/meshes/wheel.stl"/>
+      </geometry>
+      <origin rpy="-3.14 0 0" xyz="0 0 0"/> 
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.1143" radius="0.17775"/>
+      </geometry>
+      <origin rpy="1.5707 0 0" xyz="0 0 0"/> 
+    </collision>
+    <inertial>
+      <mass value="5"/>
+      <inertia ixx="0.14" ixy="0.0" ixz="0.0" iyy="0.14" iyz="0.0" izz="0.12"/>
+      <origin rpy="1.5707 0 0" xyz="0 0 0"/> 
+    </inertial>
+  </link>
+
+  <link name="back_right_wheel">
+    <visual>
+      <geometry>
+        <mesh filename="package://shamazon_robot/meshes/wheel.stl"/>
+      </geometry>
+      <origin rpy="-3.14 0 0" xyz="0 0 0"/> 
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.1143" radius="0.17775"/>
+      </geometry>
+      <origin rpy="1.5707 0 0" xyz="0 0 0"/> 
+    </collision>
+    <inertial>
+      <mass value="5"/>
+      <inertia ixx="0.14" ixy="0.0" ixz="0.0" iyy="0.14" iyz="0.0" izz="0.12"/>
+      <origin rpy="1.5707 0 0" xyz="0 0 0"/> 
+    </inertial>
+  </link>
+
+  <joint name="robot_footprint_joint" type="fixed">
+    <parent link="robot_footprint"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+
+  <joint name="conveyor1_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="conveyor1"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+
+  <joint name="conveyor2_joint" type="prismatic">
+    <parent link="base_link"/>
+    <child link="conveyor2"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="1000.0" lower="-0.4" upper="0.4" velocity="0.5"/>
+    <origin xyz="0 0 0.25" rpy="0 0 0" />
+  </joint>
+
+  <transmission name="conveyor2_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="conveyor2_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="conveyor2_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <joint name="front_left_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="front_left_wheel"/>
+    <origin rpy="0 0 0" xyz="0.256 0.285475 0.035"/>
+    <axis rpy="0 0 0" xyz="0 1 0"/>
+    <dynamics damping="1.0" friction="1.0"/>
+    <limit effort="10000" velocity="1000"/>
+  </joint>
+  
+  <joint name="front_right_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="front_right_wheel"/>
+    <origin rpy="0 0 0" xyz="0.256 -0.285475 0.035"/>
+    <axis rpy="0 0 0" xyz="0 1 0"/>
+    <dynamics damping="1.0" friction="1.0"/>
+    <limit effort="10000" velocity="1000"/>
+  </joint>
+
+  <joint name="back_left_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="back_left_wheel"/>
+    <origin rpy="0 0 0" xyz="-0.256 0.285475 0.035"/>
+    <axis rpy="0 0 0" xyz="0 1 0"/>
+    <dynamics damping="1.0" friction="1.0"/>
+    <limit effort="10000" velocity="1000"/>
+  </joint>
+
+  <joint name="back_right_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="back_right_wheel"/>
+    <origin rpy="0 0 0" xyz="-0.256 -0.285475 0.035"/>
+    <axis rpy="0 0 0" xyz="0 1 0"/>
+    <dynamics damping="1.0" friction="1.0"/>
+    <limit effort="10000" velocity="1000"/>
+  </joint>
+
+  <gazebo>
+    <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
+      <updateRate>100.0</updateRate>
+      <robotNamespace>/</robotNamespace>
+      <leftFrontJoint>front_left_wheel_joint</leftFrontJoint>
+      <rightFrontJoint>front_right_wheel_joint</rightFrontJoint>
+      <leftRearJoint>back_left_wheel_joint</leftRearJoint>
+      <rightRearJoint>back_right_wheel_joint</rightRearJoint>
+      <wheelSeparation>0.57095</wheelSeparation>
+      <wheelDiameter>0.3555</wheelDiameter>
+      <robotBaseFrame>robot_footprint</robotBaseFrame>
+      <torque>100</torque>
+      <topicName>cmd_vel</topicName>
+      <broadcastTF>true</broadcastTF>
+    </plugin>
+  </gazebo>
+
+   <!-- Depth Camera Intel RealSense D435i -->
+  <link name="realsense_link">
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+       <mesh filename="package://shamazon_robot/meshes/realsense_link.stl"/>
+      </geometry>
+    </collision> -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+       <mesh filename="package://shamazon_robot/meshes/realsense_link.stl"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+   
+  <joint name="realsense_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="realsense_link"/>
+    <axis xyz="0 0 0" />
+    <origin xyz="0.32 0 0.2" rpy="0 0 0"/>
+  </joint>
+  <joint name="realsense_optical_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="-1.5707 0 -1.5707"/>
+    <parent link="realsense_link"/>
+    <child link="realsense_optical_link"/>
+  </joint>
+  <link name="realsense_optical_link"/>
+  
+  <gazebo reference="realsense_link">
+   <sensor name="realsense" type="depth">
+    <update_rate>20</update_rate>
+    <camera>
+      <horizontal_fov>1.047198</horizontal_fov>
+      <image>
+        <width>640</width>
+        <height>480</height>
+        <format>R8G8B8</format>
+      </image>
+      <clip>
+        <near>0.05</near>
+        <far>3</far>
+      </clip>
+    </camera>
+    <plugin name="realsense_controller" filename="libgazebo_ros_openni_kinect.so">
+      <baseline>0.2</baseline>
+      <alwaysOn>false</alwaysOn>
+      <updateRate>1.0</updateRate>
+      <cameraName>realsense_ir</cameraName>
+      <imageTopicName>/realsense/color/image_raw</imageTopicName>
+      <cameraInfoTopicName>/realsense/color/camera_info</cameraInfoTopicName>
+      <depthImageTopicName>/realsense/depth/image_raw</depthImageTopicName>
+      <depthImageInfoTopicName>/realsense/depth/camera_info</depthImageInfoTopicName>
+      <pointCloudTopicName>/realsense/depth/points</pointCloudTopicName>
+      <frameName>realsense_optical_link</frameName>
+      <pointCloudCutoff>0.5</pointCloudCutoff>
+      <pointCloudCutoffMax>3.0</pointCloudCutoffMax>
+      <distortionK1>0.00000001</distortionK1>
+      <distortionK2>0.00000001</distortionK2>
+      <distortionK3>0.00000001</distortionK3>
+      <distortionT1>0.00000001</distortionT1>
+      <distortionT2>0.00000001</distortionT2>
+      <CxPrime>0</CxPrime>
+      <Cx>0</Cx>
+      <Cy>0</Cy>
+      <focalLength>0</focalLength>
+      <hackBaseline>0</hackBaseline>
+    </plugin>
+   </sensor>
+  </gazebo>
+
+  <!-- Lidar -->
+  <joint name="lidar_base_link_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="base_laser"/>
+    <origin rpy="0 0 0" xyz="0.4 0 0.1"/>
+    <axis rpy="0 0 0" xyz="0 0 0"/>
+  </joint>
+  
+  <gazebo reference="base_link">
+   <material>Gazebo/Yellow</material>
+  </gazebo>
+  <gazebo reference="front_left_wheel">
+    <material>Gazebo/Grey</material>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <selfCollide>true</selfCollide>
+    <minDepth>0.003</minDepth>
+  </gazebo>
+  <gazebo reference="back_left_wheel">
+    <material>Gazebo/Grey</material>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <selfCollide>true</selfCollide>
+    <minDepth>0.003</minDepth>
+  </gazebo>
+  <gazebo reference="back_right_wheel">
+    <material>Gazebo/Grey</material>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <selfCollide>true</selfCollide>
+    <minDepth>0.003</minDepth>
+  </gazebo>
+  <gazebo reference="front_right_wheel">
+    <material>Gazebo/Grey</material>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <selfCollide>true</selfCollide>
+    <minDepth>0.003</minDepth>
+  </gazebo>
+  <gazebo reference="conveyor1">
+    <material>Gazebo/DarkGray</material>
+  </gazebo>
+  <gazebo reference="robot_footprint">
+    <gravity>true</gravity>
+  </gazebo>
+  
+  <gazebo>
+    <plugin filename="libgazebo_ros_control.so" name="control">
+      <robotNamespace>/</robotNamespace>
+      <legacyModeNS>true</legacyModeNS>
+    </plugin>
+  </gazebo>
+</robot>
