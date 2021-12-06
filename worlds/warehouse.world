@@ -6,6 +6,7 @@
     <include>
       <uri>model://sun</uri>
     </include>
+    
     <!-- A ground plane -->
     <include>
       <uri>model://ground_plane</uri>
