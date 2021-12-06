@@ -1,3 +1,2 @@
 GlobalPlanner:
   use_dijkstra: true
-
