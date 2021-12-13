@@ -36,7 +36,6 @@
 #pragma once
 #include<string>
 
-
 /**
  * @brief Class to hold UserInterface attributes and members.
  */

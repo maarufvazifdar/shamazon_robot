@@ -32,9 +32,9 @@
  * 
  */
 
-
 #pragma once
 #include<string>
+#include<navigation.hpp>
 
 
 /**
@@ -68,7 +68,7 @@ class Elevator {
    * @param delivery_floor int - Floor to deliver the package.
    * @return bool - Status whether elevator reached desired floor.
    */
-  bool moveElevator(int delivery_floor);
+  bool moveElevator();
 
  private:
   /**
