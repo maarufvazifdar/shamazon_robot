@@ -33,35 +33,43 @@
  */
 
 #include<ros/ros.h>
-#include<nav_msgs/Odometry.h> 
+#include<nav_msgs/Odometry.h>
 #include<move_base_msgs/MoveBaseAction.h>
 #include<actionlib/client/simple_action_client.h>
 #include <tf/tf.h>
-
+#include <vector>
+#include "nav_msgs/OccupancyGrid.h"
 
 #pragma once
-
 
 /**
  * @brief Class to hold robot's navigation related attributes and members.
  */
 class Navigation {
  public:
+  // ros::init(argc, argv,"shamazon_robot");
   ros::NodeHandle nh;
-  
+  std::vector<double> pickup_goal = { 3.4, 3.4, -2 };
+  std::vector<std::vector<double>> delivery_goal = { { 7.5, 0, 1.57 }, { 7.5, 0,
+      1.57 } };
+
   /** 
    * @brief  Constrctor of Class Navigation to initialize attributes.
    */
   Navigation() {
     _goal_status = true;
-    // _pickup_goal = [1, 0, 1.5707];
-    // _delivery_goal = [15, 5, 3.1415];
+    current_position_x;
+    current_position_y;
+    ros::Subscriber sub =
+        nh.subscribe < nav_msgs::OccupancyGrid
+            > ("/multimap_server/maps/level_2/localization/map", 1, &Navigation::mapCallback, this);
   }
 
   /**
    * @brief Destructor of class Navigation.
    */
-  ~Navigation() {}
+  ~Navigation() {
+  }
 
   /**
    * @brief Callback for current robot's pose.
@@ -72,9 +80,7 @@ class Navigation {
 
   /**
    * @brief Send desired goal to move_base action server.
-   * @param goal_x float - X coordinate of desired goal (in m).
-   * @param goal_y float - Y coordinate of desired goal (in m).
-   * @param goal_theta float - Orientation of desired goal (in rad).
+   * @param const nav_msgs::Odometry::ConstPtr &msg.
    * @return void
    */
   void sendGoalsToActionServer(float goal_x, float goal_y, float goal_theta);
@@ -95,19 +101,24 @@ class Navigation {
 
   /**
    * @brief Update global map in the map server.
-   * @param floor_map int - Global map of specific floor.
+   * @param none.
    * @return void
    */
-  void updateGlobalMap(int floor_map);
+  void mapCallback(nav_msgs::OccupancyGrid msg);
+
+  void updateGlobalMap();
 
  private:
   /**
    * Class local variables.
    */
   bool _goal_status;
-  // double _pickup_goal[];
-  // double _delivery_goal[];
+  double current_position_x;
+  double current_position_y;
+  double current_quat[3];
+
   typedef actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> _move_base_client;
   move_base_msgs::MoveBaseGoal _goal;
   nav_msgs::Odometry _robot_pose;
+  nav_msgs::OccupancyGrid map;
 };

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+  <node name="/gazebo/set_model_state" pkg="shamazon_robot" type="/gazebo/set_model_state"/>
+  
+  <test pkg="beginner_tutorials" test-name="service_test_node" type="srv_test" />
+</launch>
