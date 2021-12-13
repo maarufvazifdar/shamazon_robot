@@ -1,4 +1,8 @@
 <?xml version="1.0"?>
+
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+
+
 <package format="2">
   <name>shamazon_robot</name>
   <version>0.0.0</version>
@@ -9,7 +13,7 @@
   <!-- <maintainer email="jane.doe@example.com">Jane Doe</maintainer> -->
   <maintainer email="pratik@todo.todo">pratik</maintainer>
   <maintainer email="maarufvazifdar@gmail.com">Maaruf</maintainer>
-  <maintainer email="maitreyakr@gmail.com">Maitreya</maintainer>
+  
 
   <!-- One license tag required, multiple allowed, one license per tag -->
   <!-- Commonly used license strings: -->
@@ -28,11 +32,11 @@
   <depend>move_base_msgs</depend>
   <depend>actionlib</depend>
   <depend>gazebo_msgs</depend>
+  <depend>gazebo_ros</depend>
+  <depend>gazebo</depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>
-    <!-- Other tools can request additional information be placed here -->
     <gazebo_ros gazebo_model_path="${prefix}/models"/>
-    <gazebo_ros gazebo_media_path="${prefix}"/>
   </export>
 </package>
