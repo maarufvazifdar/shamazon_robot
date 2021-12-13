@@ -149,6 +149,19 @@ bool Elevator::moveElevator() {
   return true;
 }
 
+void Navigation::mapCallback(nav_msgs::OccupancyGrid msg) {
+  map = msg;
+}
+
+
+// void Navigation::updateGlobalMap() {
+//   // Publisher for velocity commands
+//   ros::Publisher map_pub = nh.advertise < nav_msgs::OccupancyGrid > ("/map", 1);
+//   while (map_pub.getNumSubscribers() < 2) {
+//     map_pub(map);
+//   }
+// }
+
 void Navigation::PoseCallback(const nav_msgs::Odometry::ConstPtr &msg) {
   current_position_x = msg->pose.pose.position.x;
   current_position_y = msg->pose.pose.position.y;

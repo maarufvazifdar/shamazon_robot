@@ -38,6 +38,7 @@
 #include<actionlib/client/simple_action_client.h>
 #include <tf/tf.h>
 #include <vector>
+#include "nav_msgs/OccupancyGrid.h"
 
 #pragma once
 
@@ -59,7 +60,7 @@ class Navigation {
     _goal_status = true;
     current_position_x;
     current_position_y;
-    sub = _n.subscribe < nav_msgs::OccupancyGrid
+    ros::Subscriber sub = nh.subscribe < nav_msgs::OccupancyGrid
       > ("/multimap_server/maps/level_2/localization/map", 1, &Navigation::mapCallback, this);
   }
 
