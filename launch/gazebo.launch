@@ -38,9 +38,9 @@
   <arg name="map_file" default="$(find shamazon_robot)/config/shamazon_envn.yaml"/>
   
   	<!-- Run the map server -->
-	<node name="multimap_server" pkg="multimap_server" type="multimap_server" args="$(arg map_file)">
+	<node name="multimap_server" pkg="multimap_server" type="multimap_server" args="$(arg map_file)"/>
 
-  <include file="$(find shamazon_robot)/launch/navigation.launch">
+  <include file="$(find shamazon_robot)/launch/navigation.launch"/>
 
 
   
