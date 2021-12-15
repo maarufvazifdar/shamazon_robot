@@ -28,6 +28,8 @@
   <exec_depend>roscpp</exec_depend>
   <exec_depend>std_msgs</exec_depend>
   <depend>move_base</depend>
+  <depend>teb_local_planner</depend>
+  <depend>global_planner</depend>
   <depend>nav_msgs</depend>
   <depend>move_base_msgs</depend>
   <depend>actionlib</depend>

@@ -62,7 +62,8 @@ class Navigation {
     current_position_y;
     ros::Subscriber sub =
         nh.subscribe < nav_msgs::OccupancyGrid
-            > ("/multimap_server/maps/level_2/localization/map", 1, &Navigation::mapCallback, this);
+            > ("/multimap_server/maps/level_2/localization/map",
+              1, &Navigation::mapCallback, this);
   }
 
   /**
@@ -117,7 +118,8 @@ class Navigation {
   double current_position_y;
   double current_quat[3];
 
-  typedef actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> _move_base_client;
+  typedef actionlib::SimpleActionClient
+  <move_base_msgs::MoveBaseAction> _move_base_client;
   move_base_msgs::MoveBaseGoal _goal;
   nav_msgs::Odometry _robot_pose;
   nav_msgs::OccupancyGrid map;

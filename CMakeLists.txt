@@ -15,10 +15,11 @@ find_package(catkin REQUIRED COMPONENTS
   actionlib
   gazebo_msgs
   gazebo_ros
+  message_generation
   
 )
 
-
+# generate_messages(DEPENDENCIES std_msgs)
 ###################################
 ## catkin specific configuration ##
 ###################################
@@ -52,21 +53,19 @@ target_link_libraries(shamazon_robot ${catkin_LIBRARIES})
 install(DIRECTORY models
 	DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 
-#   if(CATKIN_ENABLE_TESTING)
-#   find_package(rostest REQUIRED)
+  if(CATKIN_ENABLE_TESTING)
+  find_package(rostest REQUIRED)
 
-#   add_rostest_gtest(
-#   srv_test
-#   test/srv_test.test
-#   test/srv_test.cpp
-#   )
-#   target_link_libraries(
-#     srv_test
-#   ${catkin_LIBRARIES}
-#   )
-#   add_dependencies(
-#     srv_test
-#   ${PROJECT_NAME}_generate_messages_cpp
-#   ${catkin_EXPORTED_TARGETS}
-#   )
-# endif()
+  add_rostest_gtest(shamazon_test
+  test/shamazon_test.test
+  test/shamazon_test.cpp
+  )
+  target_link_libraries(
+    shamazon_test
+  ${catkin_LIBRARIES}
+  )
+  add_dependencies(
+    shamazon_test
+  ${catkin_EXPORTED_TARGETS}
+  )
+endif()

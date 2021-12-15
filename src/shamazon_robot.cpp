@@ -33,15 +33,15 @@
  */
 
 #include<ros/ros.h>
+#include<ros/package.h>
+#include<nav_msgs/MapMetaData.h>
+#include<gazebo_msgs/SetModelState.h>
+#include<std_msgs/Float64.h>
+#include<tf/tf.h>
+#include<iostream>
 #include<user_interface.hpp>
 #include<navigation.hpp>
 #include<elevator.hpp>
-#include<ros/package.h>
-#include<nav_msgs/MapMetaData.h>
-#include<tf/tf.h>
-#include<gazebo_msgs/SetModelState.h>
-#include<iostream>
-#include<std_msgs/Float64.h>
 
 
 void UserInterface::setDeliveryLocation(std::string delivery_location) {
@@ -57,13 +57,12 @@ void UserInterface::setDeliveryFloor(int delivery_floor) {
 }
 
 int Elevator::getElevatorFloor() {
-
 }
 
 bool Elevator::moveElevator() {
   Navigation N2;
-  ros::ServiceClient client = N2.nh.serviceClient<gazebo_msgs::SetModelState>("/gazebo/set_model_state");
-
+  ros::ServiceClient client = N2.nh.serviceClient
+  <gazebo_msgs::SetModelState>("/gazebo/set_model_state");
   ros::Rate loop_rate(100);
 
   // geometry_msgs::Point target_pose;
@@ -77,7 +76,6 @@ bool Elevator::moveElevator() {
   gazebo_msgs::SetModelState srv;
   gazebo_msgs::SetModelState srv2;
   gazebo_msgs::SetModelState srv3;
-  
 
   for (double i = 0; i < 4000; i++) {
     robot_pose.position.x = 0;
@@ -98,15 +96,14 @@ bool Elevator::moveElevator() {
 
     package_modelstate.model_name = (std::string) "package";
     package_modelstate.pose = package_pose;
-        
     srv.request.model_state = robot_modelstate;
     srv2.request.model_state = elevator_modelstate;
     srv3.request.model_state = package_modelstate;
-  
-    if (client.call(srv) && client.call(srv2) && client.call(srv3)) {
-      ROS_DEBUG_STREAM("Moving");
+      if (client.call(srv) && client.call(srv2)
+      && client.call(srv3)) {      ROS_DEBUG_STREAM("Moving");
     } else {
-        ROS_ERROR("Failed to magic move elevator! Error msg:%s",srv.response.status_message.c_str());
+        ROS_ERROR("Failed to magic move elevator! Error msg:%s",
+        srv.response.status_message.c_str());
     }
   }
   geometry_msgs::Pose elevator_base_pose;
@@ -133,17 +130,15 @@ bool Elevator::moveElevator() {
 
     robot_modelstate.model_name = (std::string) "shamazon_robot";
     robot_modelstate.pose = robot_pose;
-    
     package_modelstate.model_name = (std::string) "package";
     package_modelstate.pose = package_pose;
-    
     srv.request.model_state = robot_modelstate;
     srv3.request.model_state = package_modelstate;
-  
     if (client.call(srv) && client.call(srv3)) {
       ROS_DEBUG_STREAM("Moving");
     } else {
-        ROS_ERROR("Failed to magic move elevator! Error msg:%s",srv.response.status_message.c_str());
+        ROS_ERROR("Failed to magic move elevator! Error msg:%s"
+        , srv.response.status_message.c_str());
     }
   }
   return true;
@@ -153,32 +148,22 @@ void Navigation::mapCallback(nav_msgs::OccupancyGrid msg) {
   map = msg;
 }
 
-
-// void Navigation::updateGlobalMap() {
-//   // Publisher for velocity commands
-//   ros::Publisher map_pub = nh.advertise < nav_msgs::OccupancyGrid > ("/map", 1);
-//   while (map_pub.getNumSubscribers() < 2) {
-//     map_pub(map);
-//   }
-// }
-
 void Navigation::PoseCallback(const nav_msgs::Odometry::ConstPtr &msg) {
   current_position_x = msg->pose.pose.position.x;
   current_position_y = msg->pose.pose.position.y;
-  
-  double current_quat[] = {msg->pose.pose.orientation.x, 
-                           msg->pose.pose.orientation.y, 
-                           msg->pose.pose.orientation.z, 
+  double current_quat[] = {msg->pose.pose.orientation.x,
+                           msg->pose.pose.orientation.y,
+                           msg->pose.pose.orientation.z,
                            msg->pose.pose.orientation.w};
-
 }
 
-void Navigation::sendGoalsToActionServer(float goal_x, float goal_y, float goal_theta) {
-  //tell the action client that we want to spin a thread by default
+void Navigation::sendGoalsToActionServer(float goal_x,
+  float goal_y, float goal_theta) {
+// tell the action client that we want to spin a thread by default
   _move_base_client ac("move_base", true);
 
-  //wait for the action server to come up
-  while(!ac.waitForServer(ros::Duration(5.0))){
+  // wait for the action server to come up
+  while (!ac.waitForServer(ros::Duration(5.0))) {
       // ROS_INFO("Waiting for the move_base action server to come up");
   }
 
@@ -201,7 +186,7 @@ void Navigation::sendGoalsToActionServer(float goal_x, float goal_y, float goal_
 
   ac.waitForResult();
 
-  if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
+  if (ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
       // ros::ROS_INFO_STREAM("Goal Reached !\n");
       std::cout << "Goal Reached !\n";
   else
@@ -210,7 +195,8 @@ void Navigation::sendGoalsToActionServer(float goal_x, float goal_y, float goal_
 }
 
 bool Navigation::activateConveyor() {
-  ros::ServiceClient client = nh.serviceClient<gazebo_msgs::SetModelState>("/gazebo/set_model_state");
+  ros::ServiceClient client = nh.serviceClient
+  <gazebo_msgs::SetModelState>("/gazebo/set_model_state");
   ros::Rate loop_rate(100);
   geometry_msgs::Point target_pose;
   geometry_msgs::Pose package_pose;
@@ -230,16 +216,18 @@ bool Navigation::activateConveyor() {
     if (client.call(srv)) {
         ROS_DEBUG_STREAM("Moving conveyor");
       } else {
-          ROS_ERROR("Failed to magic move conveyor! Error msg:%s",srv.response.status_message.c_str());
+          ROS_ERROR("Failed to magic move conveyor! Error msg:%s",
+          srv.response.status_message.c_str());
       }
   }
   return true;
 }
 
 bool Navigation::activateRobotConveyor() {
-  ros::Publisher rob_pub = nh.advertise<std_msgs::Float64>("/conveyor2_joint_controller/command", 10);
+  ros::Publisher rob_pub = nh.advertise
+  <std_msgs::Float64>("/conveyor2_joint_controller/command", 10);
   std_msgs::Float64 msg;
-  
+
   while (rob_pub.getNumSubscribers() < 2) {
     msg.data = 0.7;
     rob_pub.publish(msg);
@@ -247,39 +235,26 @@ bool Navigation::activateRobotConveyor() {
   return true;
 }
 
-// void Navigation::updateGlobalMap(int floor_map,const nav_msgs::OccupancyGrid::ConstPtr &msg) {
+// void Navigation::updateGlobalMap
+// (int floor_map,const nav_msgs::OccupancyGrid::ConstPtr &msg) {
 //   if (floor_map==1){
 //   map_pub = nh.advertise<nav_msgs::OccupancyGrid>("/map", 1, true);
 //   map_pub.publish(msg);}}
 // }
 
 int main(int argc, char** argv) {
-  ros::init(argc, argv,"shamazon_robot");
-  
+  ros::init(argc, argv, "shamazon_robot");
   Navigation N1;
   UserInterface UI1;
   Elevator E1;
-  // ros::ROS_INFO_STREAM("Select delivery floor :\n");
-  // ros::ROS_INFO_STREAM("1: Floor 1\n" << "2: Floor 2\n");
-  // std::cout<<"Select delivery floor :\n";
-  // std::cout<<"1: Floor 1\n" << "2: Floor 2\n";
-  // int floor_no;
-  // std::cin >> floor_no;
-  // UI1.setDeliveryFloor(floor_no);
-  // // ros::ROS_INFO_STREAM("Select delivery Goal: (We only have 1 goal per floor for now): ");
-  // std::cout<<"\nSelect delivery Goal: (We only have 1 goal per floor for now): ";
-  // std::string delivery_loc;
-  // std::cin >> delivery_loc;
-  // UI1.setDeliveryLocation(delivery_loc);
-
-  // Send robot to pickup package  
+  // Send robot to pickup package
   N1.sendGoalsToActionServer(4, 8, 1.57);
   N1.activateConveyor();
 
-  N1.sendGoalsToActionServer(4.5,8.6,0);
-  N1.sendGoalsToActionServer(0,0,3.14); // elevator goal
+  N1.sendGoalsToActionServer(4.5, 8.6, 0);
+  N1.sendGoalsToActionServer(0, 0, 3.14);  // elevator goal
   E1.moveElevator();
-  N1.sendGoalsToActionServer(-5,0,3.14);
+  N1.sendGoalsToActionServer(-5, 0, 3.14);
   N1.activateRobotConveyor();
 
   // if (floor_no == 1) {

@@ -23,7 +23,8 @@ are made:
 - Code Coverage: Coveralls
 - Framework: ROS Melodic
 - Simulator: Gazebo (version 9+)
-- Open-source libraries/ packages: [ROS Navigation stack](https://github.com/ros-planning/navigation/tree/melodic-devel), [gazebo_ros_pkgs](https://github.com/ros-simulation/gazebo_ros_pkgs/tree/melodic-devel), [pgm_map_creator](https://github.com/hyfan1116/pgm_map_creator).
+- Open-source libraries/ packages: [ROS Navigation stack](https://github.com/ros-planning/navigation/tree/melodic-devel), [ gazebo_ros_pkgs](https://github.com/ros-simulation/gazebo_ros_pkgs/tree/melodic-devel), [ pgm_map_creator](https://github.com/hyfan1116/pgm_map_creator), [ multimap_server](https://github.com/RobotnikAutomation/multimap_server
+).
 
 ## Deliverables
 - Project: A simulation of Autonomous Warehouse Robot to deliver packages.
@@ -51,6 +52,65 @@ The purpose of sprint planning is to define what can be delivered in the sprint 
 Following is the link to doc for sprint planning and review - [link](https://docs.google.com/document/d/1AmzMY3f8XwVzfqlMO0ibq1iekdNcpcQLZXXCRKqJ8bo/edit)
 
 
+## Dependencies
+
+- **Ubuntu 18.04**
+- **ROS Melodic** 
+
+
+## Building and Running the package
+1. Clone the Shamazon Robot Package in src folder of your workspace:
+    ```bash
+    cd ~/<your_ws>/src
+    git clone https://github.com/maitreya1698/shamazon_robot.git
+    ```
+2. Two additional repos need to be cloned into the src folder of workspace:
+    ```bash
+    cd ~/<your_ws>/src
+    git clone https://github.com/Prat33k-dev/multimap_server_msgs
+    git clone https://github.com/Prat33k-dev/multimap_server
+    ```
+3. Install ROS dependencies:
+    ```bash
+    cd ~/<your_ws>
+    rosdep install --from-paths src --ignore-src -r -y
+    ```
+4. Building and running the package:
+    ```bash
+    cd ~/<your_ws>
+    catkin_make
+    source devel/setup.bash
+    roslaunch shamazon_robot gazebo.launch
+    ```
+5. To start simulation node (In another terminal) :
+    ```bash
+    cd ~/<your_ws>
+    source devel/setup.bash
+    rosrun shamazon_robot shamazon_robot
+    ```
+
+## Running Tests
+  ```bash
+cd ~/<your_ws>
+catkin_make
+source devel/setup.bash
+catkin_make run_tests_shamazon_robot
+```
+
+## Cppcheck and Cpp lint
+* The Output txt files will be saved under results folder  
+
+For cppcheck
+
+```bash
+sh run_check.sh 
+```
+
+For cpplint
+```bash
+sh run_cpplint.sh 
+```
+
 ## Authors
 - Pratik Bhujbal  UID: 117555295   
   Github URL: https://github.com/prat33k-dev
@@ -60,7 +120,6 @@ Following is the link to doc for sprint planning and review - [link](https://doc
   
 - Maaruf Vazifdar UID: 117509717  
   Github URL: https://github.com/maarufvazifdar
-
 
 ## License
 The 3-Clause BSD License
@@ -72,3 +131,4 @@ Redistribution and use in source and binary forms, with or without modification,
 3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ```
+

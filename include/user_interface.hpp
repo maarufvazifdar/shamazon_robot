@@ -41,8 +41,8 @@
  */
 class UserInterface {
  public:
-   int delivery_floor;
-   std::string delivery_location;
+  int delivery_floor;
+  std::string delivery_location;
 
   /** 
    * @brief  Constrctor of Class UserInterface to initialize delivery_floor 

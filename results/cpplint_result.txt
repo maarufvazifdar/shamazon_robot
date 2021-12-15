@@ -2,4 +2,4 @@ Done processing ./include/elevator.hpp
 Done processing ./include/navigation.hpp
 Done processing ./include/user_interface.hpp
 Done processing ./src/shamazon_robot.cpp
-Done processing ./test/srv_test.cpp
+Done processing ./test/shamazon_test.cpp

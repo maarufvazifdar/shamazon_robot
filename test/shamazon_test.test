@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+  <include file="$(find shamazon_robot)/launch/gazebo.launch">
+  </include>
+  <test pkg="shamazon_robot" test-name="service_test_node" type="shamazon_test" />
+</launch>

@@ -5,7 +5,7 @@
   <param name="robot_description" command="$(find xacro)/xacro $(find shamazon_robot)/urdf/shamazon_robot.xacro"/>
 
   <arg name="x" default="2"/>
-  <arg name="y" default="2"/>
+  <arg name="y" default="-8"/>
   <arg name="z" default="0.1"/>
   <arg name="roll" default="0"/>
   <arg name="pitch" default="0"/>
