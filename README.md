@@ -37,9 +37,12 @@ are made:
 - Odometry error: Can use sensor fusion algorithms from multiple sensors for odometry data.
 - A package might fall off due to sudden jerks, so robot velocity and acceleration will be constrained.
 
+## Architecture:
+The following shows the activity diagram for our proposed schema :  
+<img  alt="ad"  src="UML/final/ad.png" />  
 ## UML Diagrams:
-- ### [Activity Diagram](UML/initial/ActivityDiagram.pdf)
-- ### [Class Diagram](UML/initial/ClassDiagram.pdf)
+- ### [Activity Diagram](UML/final/ActivityDiagram.pdf)
+- ### [Class Diagram](UML/final/ClassDiagram.pdf)
 
 ## [Quad Chart](/quadchart.pdf)  
 
@@ -88,14 +91,17 @@ Following is the link to doc for sprint planning and review - [link](https://doc
     source devel/setup.bash
     rosrun shamazon_robot shamazon_robot
     ```
-
+## Simulation Result
+<img  alt="result"  src="results/output.gif" />  
+  
+  
 ## Running Tests
   ```bash
 cd ~/<your_ws>
 catkin_make
 source devel/setup.bash
 catkin_make run_tests_shamazon_robot
-```
+```  
 
 ## Cppcheck and Cpp lint
 * The Output txt files will be saved under results folder  
