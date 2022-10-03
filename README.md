@@ -39,7 +39,7 @@ are made:
 
 ## Architecture:
 The following shows the activity diagram for our proposed schema :  
-<img  alt="ad"  src="UML/final/ad.png"  width="50%" />  
+<img  alt="ad"  src="UML/final/ad.png" />  
 ## UML Diagrams:
 - ### [Activity Diagram](UML/final/ActivityDiagram.pdf)
 - ### [Class Diagram](UML/final/ClassDiagram.pdf)
