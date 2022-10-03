@@ -37,9 +37,12 @@ are made:
 - Odometry error: Can use sensor fusion algorithms from multiple sensors for odometry data.
 - A package might fall off due to sudden jerks, so robot velocity and acceleration will be constrained.
 
+## Architecture:
+The following shows the activity diagram for our proposed schema :  
+<img  alt="ad"  src="UML/final/ad.png"  width="50%" />  
 ## UML Diagrams:
-- ### [Activity Diagram](UML/initial/ActivityDiagram.pdf)
-- ### [Class Diagram](UML/initial/ClassDiagram.pdf)
+- ### [Activity Diagram](UML/final/ActivityDiagram.pdf)
+- ### [Class Diagram](UML/final/ClassDiagram.pdf)
 
 ## [Quad Chart](/quadchart.pdf)  
 
