@@ -91,14 +91,17 @@ Following is the link to doc for sprint planning and review - [link](https://doc
     source devel/setup.bash
     rosrun shamazon_robot shamazon_robot
     ```
-
+## Simulation Result
+<img  alt="result"  src="results/output.gif" />  
+  
+  
 ## Running Tests
   ```bash
 cd ~/<your_ws>
 catkin_make
 source devel/setup.bash
 catkin_make run_tests_shamazon_robot
-```
+```  
 
 ## Cppcheck and Cpp lint
 * The Output txt files will be saved under results folder  
