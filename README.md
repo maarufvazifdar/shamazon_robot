@@ -119,7 +119,7 @@ sh run_cpplint.sh
 
 ## Authors
 - Pratik Bhujbal  UID: 117555295   
-  Github URL: https://github.com/prat33k-dev
+  Github URL: https://github.com/prat1kbhujbal
 
 - Maitreya Kulkarni UID: 117506075  
   Github URL: https://github.com/maitreya98
